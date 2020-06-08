@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yan\\Desktop\\Intra\\Intra.csproj": {}
+    "C:\\Users\\Yan\\task\\Intra\\Intra.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yan\\Desktop\\Intra\\Intra.csproj": {
+    "C:\\Users\\Yan\\task\\Intra\\Intra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yan\\Desktop\\Intra\\Intra.csproj",
+        "projectUniqueName": "C:\\Users\\Yan\\task\\Intra\\Intra.csproj",
         "projectName": "Intra",
-        "projectPath": "C:\\Users\\Yan\\Desktop\\Intra\\Intra.csproj",
+        "projectPath": "C:\\Users\\Yan\\task\\Intra\\Intra.csproj",
         "packagesPath": "C:\\Users\\Yan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yan\\Desktop\\Intra\\obj\\",
+        "outputPath": "C:\\Users\\Yan\\task\\Intra\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -35,12 +35,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "SHA3.Net": {
-              "target": "Package",
-              "version": "[1.2.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

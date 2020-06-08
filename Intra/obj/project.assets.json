@@ -1,79 +1,11 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
-      "BouncyCastle.NetCore/1.8.5": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
-        }
-      },
-      "SHA3.Net/1.2.3": {
-        "type": "package",
-        "dependencies": {
-          "BouncyCastle.NetCore": "1.8.5"
-        },
-        "compile": {
-          "lib/netstandard2.1/SHA3.Net.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/SHA3.Net.dll": {}
-        }
-      }
-    }
+    ".NETCoreApp,Version=v3.1": {}
   },
-  "libraries": {
-    "BouncyCastle.NetCore/1.8.5": {
-      "sha512": "6uxsQw2UXrt82VQAWC2td3oBSJjUZ3P4u4DliagB8wf67KsU53V8sW9xwdF+IwZOOZFR0TCZuv/YKZ2BlrfAag==",
-      "type": "package",
-      "path": "bouncycastle.netcore/1.8.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "bouncycastle.netcore.1.8.5.nupkg.sha512",
-        "bouncycastle.netcore.nuspec",
-        "lib/Mono/BouncyCastle.Crypto.dll",
-        "lib/Mono/BouncyCastle.Crypto.xml",
-        "lib/MonoAndroid/BouncyCastle.Crypto.dll",
-        "lib/MonoAndroid/BouncyCastle.Crypto.xml",
-        "lib/MonoMac/BouncyCastle.Crypto.dll",
-        "lib/MonoMac/BouncyCastle.Crypto.xml",
-        "lib/MonoTouch/BouncyCastle.Crypto.dll",
-        "lib/MonoTouch/BouncyCastle.Crypto.xml",
-        "lib/net20/BouncyCastle.Crypto.dll",
-        "lib/net20/BouncyCastle.Crypto.xml",
-        "lib/netstandard2.0/BouncyCastle.Crypto.dll",
-        "lib/netstandard2.0/BouncyCastle.Crypto.xml",
-        "lib/xamarinios/BouncyCastle.Crypto.dll",
-        "lib/xamarinios/BouncyCastle.Crypto.xml"
-      ]
-    },
-    "SHA3.Net/1.2.3": {
-      "sha512": "pdw51gGBecFUIbVr3Lluja+iq0Uc5ZW/M3nDTZoP2p8bzqrPFhrbkUxtFzDtoo/hHTSVZv9V/9KJJiW7VVIuxg==",
-      "type": "package",
-      "path": "sha3.net/1.2.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "images/icon.png",
-        "lib/net45/SHA3.Net.dll",
-        "lib/net46/SHA3.Net.dll",
-        "lib/netstandard2.0/SHA3.Net.dll",
-        "lib/netstandard2.1/SHA3.Net.dll",
-        "license/BouncyCastle.LICENSE",
-        "license/license.txt",
-        "sha3.net.1.2.3.nupkg.sha512",
-        "sha3.net.nuspec"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
-      "SHA3.Net >= 1.2.3"
-    ]
+    ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
     "C:\\Users\\Yan\\.nuget\\packages\\": {}
@@ -81,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yan\\Desktop\\Intra\\Intra.csproj",
+      "projectUniqueName": "C:\\Users\\Yan\\task\\Intra\\Intra.csproj",
       "projectName": "Intra",
-      "projectPath": "C:\\Users\\Yan\\Desktop\\Intra\\Intra.csproj",
+      "projectPath": "C:\\Users\\Yan\\task\\Intra\\Intra.csproj",
       "packagesPath": "C:\\Users\\Yan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yan\\Desktop\\Intra\\obj\\",
+      "outputPath": "C:\\Users\\Yan\\task\\Intra\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Yan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -109,12 +41,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "dependencies": {
-          "SHA3.Net": {
-            "target": "Package",
-            "version": "[1.2.3, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

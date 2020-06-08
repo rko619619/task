@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.IO;
 
 namespace TwilightSparkle.TestDoDiez
 {
@@ -51,16 +50,25 @@ namespace TwilightSparkle.TestDoDiez
                     break;
                 }
 
+                Console.WriteLine($"HMAC: {ToHexFromUTF8(hmac)}");
                 Console.WriteLine($"Your move: {args[intUserInput - 1]}");
-                Console.WriteLine($"Computer move: {args[computerMove - 1]}");
+                Console.WriteLine($"Computer move: {args[computerMove]}");
+                Console.WriteLine($"HMAC key: {ToHexFromUTF8(key)}");
                 var winMessage = GetWinMessage(intUserInput - 1, computerMove, args.Length);
                 Console.WriteLine(winMessage);
-                Console.WriteLine($"HMAC key: {hmac}");
             }
 
             Console.ReadKey();
         }
 
+
+        private static string ToHexFromUTF8(string input)
+        {
+            var bytes = Encoding.Default.GetBytes(input);
+            var hexString = BitConverter.ToString(bytes).Replace("-", "");
+
+            return hexString;
+        }
 
         private static bool CheckIfArgsCorrect(IReadOnlyCollection<string> args)
         {
@@ -101,23 +109,32 @@ namespace TwilightSparkle.TestDoDiez
         private static string SecureRandom()
         {
             const int iterations = 300;
-            const string key = "some_key_for_generation";
+            var key = RandomString(15);
             var salt = new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 };
 
             var keyGenerator = new Rfc2898DeriveBytes(key, salt, iterations);
-            var secureRandom = Encoding.UTF8.GetString(keyGenerator.GetBytes(32));
+            var secureRandom = Encoding.ASCII.GetString(keyGenerator.GetBytes(32));
 
             return secureRandom;
         }
 
+        public static string RandomString(int length)
+        {
+            var random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
         private static string GetHMAC(string input, string key)
         {
-            using (HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key)))
+            using (HMACSHA256 hmac = new HMACSHA256(Encoding.ASCII.GetBytes(key)))
             {
-                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(input));
+                var computedHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(input));
 
-                return Encoding.UTF8.GetString(computedHash);
-            }   
+                return Encoding.ASCII.GetString(computedHash);
+            }
         }
 
         private static string GetWinMessage(int userMove, int computerMove, int amountOfMoves)

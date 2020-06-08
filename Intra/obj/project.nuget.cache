@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7ApjbtYhgsqUdAYOLg8v33gJTaoA5Mmi0gBpP2pm4wP8kbtENNkN/nXZuqWBBODIn7rhNyxKh8BLcC6je9uhlQ==",
+  "dgSpecHash": "2wKtLlTv4E5h8U8+G7a5NIDP0LABfjWQFXjM9eBcSs856PSDDt/F2OIDf8ItZ2WSaIXmDcMcF4vIL5WqSoaZ9A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yan\\Desktop\\Intra\\Intra.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Yan\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
-    "C:\\Users\\Yan\\.nuget\\packages\\sha3.net\\1.2.3\\sha3.net.1.2.3.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Yan\\task\\Intra\\Intra.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

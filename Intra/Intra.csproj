@@ -5,8 +5,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SHA3.Net" Version="1.2.3" />
-  </ItemGroup>
-
 </Project>
