@@ -1,0 +1,16 @@
+C:\Users\Yan\Desktop\Intra\bin\Debug\netcoreapp3.1\Intra.exe
+C:\Users\Yan\Desktop\Intra\bin\Debug\netcoreapp3.1\Intra.deps.json
+C:\Users\Yan\Desktop\Intra\bin\Debug\netcoreapp3.1\Intra.runtimeconfig.json
+C:\Users\Yan\Desktop\Intra\bin\Debug\netcoreapp3.1\Intra.runtimeconfig.dev.json
+C:\Users\Yan\Desktop\Intra\bin\Debug\netcoreapp3.1\Intra.dll
+C:\Users\Yan\Desktop\Intra\bin\Debug\netcoreapp3.1\Intra.pdb
+C:\Users\Yan\Desktop\Intra\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\Yan\Desktop\Intra\bin\Debug\netcoreapp3.1\SHA3.Net.dll
+C:\Users\Yan\Desktop\Intra\obj\Debug\netcoreapp3.1\Intra.csprojAssemblyReference.cache
+C:\Users\Yan\Desktop\Intra\obj\Debug\netcoreapp3.1\Intra.AssemblyInfoInputs.cache
+C:\Users\Yan\Desktop\Intra\obj\Debug\netcoreapp3.1\Intra.AssemblyInfo.cs
+C:\Users\Yan\Desktop\Intra\obj\Debug\netcoreapp3.1\Intra.csproj.CoreCompileInputs.cache
+C:\Users\Yan\Desktop\Intra\obj\Debug\netcoreapp3.1\Intra.csproj.CopyComplete
+C:\Users\Yan\Desktop\Intra\obj\Debug\netcoreapp3.1\Intra.dll
+C:\Users\Yan\Desktop\Intra\obj\Debug\netcoreapp3.1\Intra.pdb
+C:\Users\Yan\Desktop\Intra\obj\Debug\netcoreapp3.1\Intra.genruntimeconfig.cache
