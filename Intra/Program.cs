@@ -53,7 +53,7 @@ namespace TwilightSparkle.TestDoDiez
                 Console.WriteLine($"HMAC: {ToHexFromUTF8(hmac)}");
                 Console.WriteLine($"Your move: {args[intUserInput - 1]}");
                 Console.WriteLine($"Computer move: {args[computerMove]}");
-                Console.WriteLine($"HMAC key: {ToHexFromUTF8(key)}");
+                Console.WriteLine($"HMAC key: {key}");
                 var winMessage = GetWinMessage(intUserInput - 1, computerMove, args.Length);
                 Console.WriteLine(winMessage);
             }
@@ -108,25 +108,12 @@ namespace TwilightSparkle.TestDoDiez
 
         private static string SecureRandom()
         {
-            const int iterations = 300;
-            var key = RandomString(15);
-            var salt = new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 };
-
-            var keyGenerator = new Rfc2898DeriveBytes(key, salt, iterations);
-            var secureRandom = Encoding.ASCII.GetString(keyGenerator.GetBytes(32));
-
-            return secureRandom;
-        }
-
-        public static string RandomString(int length)
-        {
             using var provider = new RNGCryptoServiceProvider();
-            var randomNumber = new byte[1];
-            provider.GetBytes(randomNumber);
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var randomNumbers = new byte[32];
+            provider.GetBytes(randomNumbers);
+            var hexString = BitConverter.ToString(randomNumbers).Replace("-", "");
 
-            return new string(Enumerable.Repeat(chars, length)
-            .Select(s => s[randomNumber[0] % s.Length]).ToArray());
+            return hexString;
         }
 
         private static string GetHMAC(string input, string key)
