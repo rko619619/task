@@ -120,11 +120,13 @@ namespace TwilightSparkle.TestDoDiez
 
         public static string RandomString(int length)
         {
-            var random = new Random();
+            using var provider = new RNGCryptoServiceProvider();
+            var randomNumber = new byte[1];
+            provider.GetBytes(randomNumber);
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
             return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+            .Select(s => s[randomNumber[0] % s.Length]).ToArray());
         }
 
         private static string GetHMAC(string input, string key)
