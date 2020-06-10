@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -50,24 +51,44 @@ namespace TwilightSparkle.TestDoDiez
                     break;
                 }
 
-                Console.WriteLine($"HMAC: {ToHexFromUTF8(hmac)}");
+                var hmacBefore = ToHexFromUTF8(hmac);
+                Console.WriteLine($"HMAC before user move: {hmacBefore}");
+                Console.WriteLine("It can be used to ensure that computer played fair");
                 Console.WriteLine($"Your move: {args[intUserInput - 1]}");
                 Console.WriteLine($"Computer move: {args[computerMove]}");
                 Console.WriteLine($"HMAC key: {key}");
+                var hmacAfter = ToHexFromUTF8(GetHMAC(args[computerMove], key));
+                Console.WriteLine($"Computed computer HMAC after user move - {hmacAfter}");
+                Console.WriteLine(hmacBefore == hmacAfter ? "Same HMAC. Computer played fair" : "HMAC changed. Computer cheated");
                 var winMessage = GetWinMessage(intUserInput - 1, computerMove, args.Length);
                 Console.WriteLine(winMessage);
+
+                Console.WriteLine();
+                Console.WriteLine("Use https://www.liavaag.org/English/SHA-Generator/HMAC/ to verify fair game by yourself.");
+                Console.WriteLine("Use computer move as input with type text, hmac key as key with type HEX and algorithm SHA-256 with output type HEX");
+                Console.WriteLine();
             }
 
             Console.ReadKey();
         }
 
 
-        private static string ToHexFromUTF8(string input)
+        private static string ToHexFromUTF8(byte[] bytes)
         {
-            var bytes = Encoding.Default.GetBytes(input);
-            var hexString = BitConverter.ToString(bytes).Replace("-", "");
+            var hexString = BitConverter.ToString(bytes).Replace("-", "").ToLower();
 
             return hexString;
+        }
+
+        private static byte[] HexDecode(string hex)
+        {
+            var bytes = new byte[hex.Length / 2];
+            for (var i = 0; i < bytes.Length; i++)
+            {
+                bytes[i] = byte.Parse(hex.Substring(i * 2, 2), NumberStyles.HexNumber);
+            }
+
+            return bytes;
         }
 
         private static bool CheckIfArgsCorrect(IReadOnlyCollection<string> args)
@@ -111,18 +132,18 @@ namespace TwilightSparkle.TestDoDiez
             using var provider = new RNGCryptoServiceProvider();
             var randomNumbers = new byte[32];
             provider.GetBytes(randomNumbers);
-            var hexString = BitConverter.ToString(randomNumbers).Replace("-", "");
+            var hexString = ToHexFromUTF8(randomNumbers);
 
             return hexString;
         }
 
-        private static string GetHMAC(string input, string key)
+        private static byte[] GetHMAC(string input, string key)
         {
-            using (HMACSHA256 hmac = new HMACSHA256(Encoding.ASCII.GetBytes(key)))
+            using (HMACSHA256 hmac = new HMACSHA256(HexDecode(key)))
             {
                 var computedHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(input));
 
-                return Encoding.ASCII.GetString(computedHash);
+                return computedHash;
             }
         }
 
