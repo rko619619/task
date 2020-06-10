@@ -19,12 +19,17 @@ namespace TwilightSparkle.TestDoDiez
 
                 return;
             }
+            Console.WriteLine("Game started");
 
             while (true)
             {
+                Console.WriteLine("Round started");
                 var computerMove = GetComputerMove(args);
                 var key = SecureRandom();
                 var hmac = GetHMAC(args[computerMove], key);
+                var hmacBefore = ToHexFromUTF8(hmac);
+                Console.WriteLine($"HMAC of computer move before user move: {hmacBefore}");
+                Console.WriteLine("It can be used to ensure that computer played fair");
 
                 Console.WriteLine("Available moves:");
                 for (var i = 1; i <= args.Length; i++)
@@ -33,7 +38,7 @@ namespace TwilightSparkle.TestDoDiez
                     Console.WriteLine($"{i} - {arg}");
                 }
                 Console.WriteLine("0 - exit");
-                Console.Write("Your move: ");
+                Console.WriteLine("Please enter your move:");
                 var userInput = Console.ReadLine();
                 var parseResult = int.TryParse(userInput, out var intUserInput);
                 if (!parseResult)
@@ -51,17 +56,11 @@ namespace TwilightSparkle.TestDoDiez
                     break;
                 }
 
-                var hmacBefore = ToHexFromUTF8(hmac);
-                Console.WriteLine($"HMAC before user move: {hmacBefore}");
-                Console.WriteLine("It can be used to ensure that computer played fair");
                 Console.WriteLine($"Your move: {args[intUserInput - 1]}");
                 Console.WriteLine($"Computer move: {args[computerMove]}");
-                Console.WriteLine($"HMAC key: {key}");
-                var hmacAfter = ToHexFromUTF8(GetHMAC(args[computerMove], key));
-                Console.WriteLine($"Computed computer HMAC after user move - {hmacAfter}");
-                Console.WriteLine(hmacBefore == hmacAfter ? "Same HMAC. Computer played fair" : "HMAC changed. Computer cheated");
                 var winMessage = GetWinMessage(intUserInput - 1, computerMove, args.Length);
                 Console.WriteLine(winMessage);
+                Console.WriteLine($"HMAC key: {key}");
 
                 Console.WriteLine();
                 Console.WriteLine("Use https://www.liavaag.org/English/SHA-Generator/HMAC/ to verify fair game by yourself.");
